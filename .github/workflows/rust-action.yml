@@ -1,22 +1,22 @@
-name: Rodar código Rust
-
+name: Publicar Action
 on:
   push:
     branches:
       - main
-
 jobs:
-  run-rust:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do código
         uses: actions/checkout@v4
 
       - name: Instalar Rust
-        uses: dtolnay/rust-toolchain@stable  # Instala o Rust estável
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Construir o projeto
         run: cargo build --release
 
-      - name: Executar o programa Rust
-        run: ./target/release/git-rewards-action
+      - name: Criar release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: target/release/git-rewards-action
