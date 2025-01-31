@@ -1,0 +1,21 @@
+name: "Minha Action Rust"
+description: "Uma GitHub Action que executa um código Rust"
+author: "Seu Nome"
+
+branding:
+  icon: "zap"   # Ícone no Marketplace (opcional)
+  color: "blue" # Cor no Marketplace (opcional)
+
+inputs:
+  nome:
+    description: "Nome do usuário"
+    required: false
+    default: "Mundo"
+
+outputs:
+  mensagem:
+    description: "Mensagem gerada pela Action"
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
