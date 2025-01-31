@@ -19,4 +19,4 @@ jobs:
         run: cargo build --release
 
       - name: Executar o programa Rust
-        run: ./target/release/minha-action-rust
+        run: ./target/release/get-rewards
