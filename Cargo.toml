@@ -1,5 +1,5 @@
 [package]
-name = "git-rewards"
+name = "git-rewards-action"
 version = "0.1.0"
 edition = "2021"
 

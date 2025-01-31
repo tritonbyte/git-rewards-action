@@ -8,4 +8,4 @@ COPY . .
 RUN cargo build --release
 
 # Define o comando que será executado
-ENTRYPOINT ["./target/release/git-rewards"]
+ENTRYPOINT ["./target/release/git-rewards-action"]
