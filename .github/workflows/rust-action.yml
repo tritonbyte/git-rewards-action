@@ -7,16 +7,31 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      # Checkout do código
       - name: Checkout do código
         uses: actions/checkout@v4
 
+      # Instalar Rust
       - name: Instalar Rust
         uses: dtolnay/rust-toolchain@stable
 
+      # Construir o projeto
       - name: Construir o projeto
         run: cargo build --release
 
+      # Criar uma tag (opcionalmente com base na data ou número da versão)
+      - name: Criar tag
+        id: create_tag
+        run: |
+          echo "Criando nova tag..."
+          TAG="v1.$(date +'%Y%m%d%H%M%S')"  # Exemplo: v1.20231010120000
+          git tag $TAG
+          git push origin $TAG
+          echo "tag=$TAG" >> $GITHUB_ENV
+
+      # Criar release
       - name: Criar release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ env.tag }}
           files: target/release/git-rewards-action
